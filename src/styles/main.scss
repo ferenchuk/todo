@@ -1,0 +1,138 @@
+// Variables
+$black: #3c3c3c;
+
+body {
+  font-family: "Roboto", sans-serif;
+  color: $black;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.app-background {
+  top: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-image: url("https://source.unsplash.com/collection/1368747");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: linear-gradient(to bottom right,#002f4b,#dc4225);
+    opacity: .6;
+  }
+}
+
+.panel {
+  position: relative;
+  width: 500px;
+  max-height: 80vh;
+  overflow: auto;
+  margin: 0 auto;
+  background: white;
+  border-radius: 5px;
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, .2);
+
+  &-header {
+    font-size: 24px;
+    font-weight: bold;
+    padding: 20px;
+  }
+
+  .list {
+    max-height: 500px;
+    overflow: auto;
+
+    .editing {
+      padding: 0 20px;
+    }
+  }
+
+  &-footer {
+    padding: 20px;
+  }
+}
+
+.item {
+  padding: 10px 20px;
+  font-size: 18px;
+  transition: .3s;
+  position: relative;
+
+  &.completed {
+    label {
+      color: black;
+      opacity: .5;
+      text-decoration: line-through;
+    }
+  }
+
+  .delete-item {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: none;
+    cursor: pointer;
+  }
+
+  &:hover {
+    background: darken(white, 10%);
+
+    .delete-item {
+      display: block;
+    }
+  }
+}
+
+input[type=text] {
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid transparent;
+  height: 40px;
+  font-size: 18px;
+  outline: none;
+  transition: .3s;
+
+  &:focus {
+    border-bottom: 2px solid $black;
+  }
+}
+
+input[type=checkbox] {
+  display: none;
+
+  +.checkmark {
+    width: 16px;
+    height: 16px;
+    border: 2px solid #3c3c3c;
+    border-radius: 3px;
+    display: inline-block;
+    margin-right: 10px;
+    vertical-align: middle;
+    position: relative;
+    cursor: pointer;
+  }
+
+  &:checked + .checkmark:before {
+    content: '\f00c';
+    font-family: "Font Awesome 5 Free", sans-serif;
+    font-weight: 900;
+    font-size: 14px;
+    top: 2px;
+    left: 1px;
+    position: absolute;
+  }
+}

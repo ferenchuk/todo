@@ -37,14 +37,19 @@ class TodoItem extends Component {
     render() {
         const { id, text, completed } = this.props;
         let item = this.state.editing ? (
-            <TodoInput text={text} onSave={(text) => this.handleSave(id, text)} />
+            <div className="editing">
+                <TodoInput text={text} onSave={(text) => this.handleSave(id, text)} />
+            </div>
         ) : (
-            <div className={completed ? 'completed' : ''}>
-                <input type="checkbox" checked={completed} onChange={this.completeTodo} />
+            <div className={`item ${completed ? 'completed' : ''}`}>
+                <label>
+                    <input type="checkbox" checked={completed} onChange={this.completeTodo} />
+                    <span className="checkmark" />
+                </label>
                 <label onDoubleClick={this.handleDoubleClick}>
                     {text}
                 </label>
-                <span onClick={this.deleteTodo}>[x]</span>
+                <i className="fas fa-times delete-item" onClick={this.deleteTodo} />
             </div>
         );
         return (
