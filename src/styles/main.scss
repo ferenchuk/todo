@@ -7,10 +7,7 @@ body {
 }
 
 #root {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  max-height: 100vh;
 }
 
 .app-background {
@@ -52,7 +49,7 @@ body {
   }
 
   .list {
-    max-height: 500px;
+    max-height: 50vh;
     overflow: auto;
 
     .editing {
@@ -62,6 +59,15 @@ body {
 
   &-footer {
     padding: 20px;
+  }
+
+  &.vertical-middle {
+    top: 50%;
+    right: 0;
+    left: 0;
+    transform: translateY(-50%);
+    position: absolute;
+    margin: 0 auto;
   }
 }
 
@@ -138,10 +144,23 @@ input[type=checkbox] {
 }
 
 .user-welcome {
-  position: absolute;
-  top: 40px;
+  padding-top: 40px;
+  position: relative;
   width: 100%;
   font-size: 28px;
   text-align: center;
   color: #e4e4e4;
+}
+
+.hint {
+  margin-top: 20px;
+  position: relative;
+
+  p {
+    text-align: center;
+    color: #bdbdbd;
+    text-shadow: 0 0 2px #000000c2;
+    margin: 0;
+    font-size: 12px;
+  }
 }
