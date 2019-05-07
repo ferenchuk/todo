@@ -30,6 +30,6 @@ export default function todos(state = initialState, action) {
             todo.id !== payload.id);
 
         default: 
-            return initialState;
+            return state;
     }
 }
